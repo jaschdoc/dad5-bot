@@ -1,6 +1,6 @@
 # Dad5Bot 
 A discord bot for Klandringer   
-Created with [Discord.js](https://discord.js.org/#/)
+Created with [Discord.js](https://discord.js.org/#/).
 To get understanding of the project, please follow [this guide](https://discordjs.guide/)
 
 # Dependencies
