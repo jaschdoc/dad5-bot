@@ -25,7 +25,7 @@ This is experimental
 - Setup `config.json_template` and rename to `config.json` 
 - Run `docker-compose up`
 - Run `docker-compose exec mongodb mongo < dbsetup.js` (Only on first run)
-- Run `docker-compose down`  to stop the bot
+- Run `docker-compose down` to stop the bot
 
 ### Nodemon configuration
 If using nodemon (The docker setup does so), you can setup [nodemon.json](./nodemon.json) to watch files and automatically reload them on save.
