@@ -10,7 +10,7 @@ module.exports = {
         const {commands} = message.client;
 
         if (!args.length) {
-            data.push("FORMBOT v.1.0");
+            data.push("Dad5 v.1.0");
             data.push("Kommandoer:");
             data.push(commands.filter(cmd => !cmd.hidden).map(command => command.name).join(', '));
             data.push("\nSkriv " + prefix + "help [kommando] for at få information om en specifik kommando!");

@@ -1,11 +1,11 @@
 version: '2'
 services:
-    formbot:
+    dadbot:
         container_name: dadbot
         build:
             context: .
             dockerfile: Dockerfile
-        image: formbot:latest
+        image: dadbot:latest
         volumes:
             - .:/app
             - /app/node_modules
