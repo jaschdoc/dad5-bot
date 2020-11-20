@@ -1,11 +1,32 @@
-# dad5-bot
-## Getting Started
-### Prerequisites
-You will need the following tools to properly run the project
-- [Node.js](https://nodejs.org/en/) (LTS or Current)
-- A terminal
+# Dad5Bot 
+A discord bot for Klandringer   
+Created with [Discord.js](https://discord.js.org/#/)
+To get understanding of the project, please follow [this guide](https://discordjs.guide/)
 
-Additionally some sort of Git installation and a text editor is required if you want to contribute. You can use whatever tools you want, however, these are great choices if you're unsure what to pick:
+# Dependencies
+- [Node.js](https://nodejs.org/)
+- [Mongodb](https://www.mongodb.com)
 
-- [GitHub Desktop](https://desktop.github.com)
-- [Visual Studio Code](https://code.visualstudio.com)
+# Usage
+To run this bot do either of the follwing:
+
+### Without docker and docker-compose
+- Install node.js
+- Install mongodb
+- OPTIONAL: `npm install nodemon --global` If you want nodemon to rerun bot on file changes
+- `npm install`
+- Setup `config.json_template` and rename to `config.json` 
+- Run instance of `mongod`
+- Run `mongo < dbsetup.js`
+- Run `node bot.js` or `nodemon bot.js`
+
+### With docker and docker-compose
+This is experimental
+- Setup `config.json_template` and rename to `config.json` 
+- Run `docker-compose up`
+- Run `docker-compose exec mongodb mongo < dbsetup.js` (Only on first run)
+- Run `docker-compose down`  to stop the bot
+
+### Nodemon configuration
+If using nodemon (The docker setup does so), you can setup [nodemon.json](./nodemon.json) to watch files and automatically reload them on save.
+To do so, delete the line `"ignore":"[*]"` and add files/paths to watch to `watch`.

@@ -1,19 +1,13 @@
 {
-  "name": "dad5-bot",
-  "version": "1.0.0",
-  "description": "You will need the following tools to properly run the project - [Node.js](https://nodejs.org/en/) (LTS or Current). - A terminal",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/jaschdoc/dad5-bot.git"
-  },
-  "author": "",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/jaschdoc/dad5-bot/issues"
-  },
-  "homepage": "https://github.com/jaschdoc/dad5-bot#readme"
+	"name": "bot-form",
+	"version": "1.0.0",
+	"description": "A bot to take care of FORM-stuff",
+	"main": "bot.js",
+	"author": "fjerbaek",
+	"dependencies": {
+		"@discordjs/opus": "^0.1.0",
+		"discord.js": "^12.1.1",
+		"ffmpeg-static": "^4.0.1",
+		"mongoose": "^5.9.7"
+	}
 }
