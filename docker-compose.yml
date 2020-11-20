@@ -1,7 +1,7 @@
 version: '2'
 services:
     formbot:
-        container_name: formbot
+        container_name: dadbot
         build:
             context: .
             dockerfile: Dockerfile
