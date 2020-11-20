@@ -1,0 +1,12 @@
+module.exports = {
+	name: '',                        //name of command
+	usage: '',                       //Evnetual parameters needed
+	description: '',                 //Description
+	args: bool,                      //true if arguments are required. Default: false
+        tutoronly: bool,                 //true if only tutors should be able to call command
+        alias:[a,b,c],                   //List of aliases for command
+	async execute(message, args) {         //Actual command to run. message.channel and message.client are useful 
+            //...
+	}
+};
+
