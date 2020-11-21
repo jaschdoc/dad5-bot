@@ -1,5 +1,8 @@
 {
     "verbose": true,
-    "watch" : ["*.js", "commands/*.js", "utils/*.js"]
+    "watch": [
+        "*.js",
+        "commands/*.js",
+        "utils/*.js"
+    ]
 }
-

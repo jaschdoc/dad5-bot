@@ -1,5 +1,5 @@
 const channelUtils = require('../utils/channelutils')
-const {prefix} = require('../config.json');
+const { prefix } = require('../config.json');
 module.exports = {
     name: 'help',
     description: 'Skriver alle gyldige kommandoer',
@@ -7,7 +7,7 @@ module.exports = {
     usage: '[kommando]',
     execute(message, args) {
         const data = [];
-        const {commands} = message.client;
+        const { commands } = message.client;
 
         if (!args.length) {
             data.push("Dad5 v.1.0");
@@ -27,7 +27,7 @@ module.exports = {
 
         data.push("**Navn:** " + command.name + "\n");
 
-        if (command.aliases) data.push("**Aliasser:** " +  command.aliases.join(", ") +  "\n");
+        if (command.aliases) data.push("**Aliasser:** " + command.aliases.join(", ") + "\n");
         if (command.usage) data.push("**Brug:** " + prefix + command.name + command.usage + "\n");
         if (command.description) data.push("**Beskrivelse:** " + command.description + "\n");
         channelUtils.sendMessage(message.channel, data.join(""));

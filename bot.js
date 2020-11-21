@@ -1,6 +1,6 @@
 const fs = require('fs');
 const Discord = require('discord.js');
-const {prefix, token, dbURL, dbPort} = require('./config.json');
+const { prefix, token, dbURL, dbPort } = require('./config.json');
 
 const client = new Discord.Client();
 client.commands = new Discord.Collection();
@@ -11,7 +11,7 @@ const commandFiles = fs.readdirSync('./commands').filter(file => file.endsWith('
 
 //Sets path for command files
 for (const file of commandFiles) {
-    const command = require('./commands/'+file);
+    const command = require('./commands/' + file);
     client.commands.set(command.name, command);
 }
 
@@ -24,7 +24,7 @@ client.login(token);
 
 //Parses messages sent 
 client.on('message', message => {
-    
+
     //Breaks early if message does not start with prefix or if message is from a bot
     if (!message.content.startsWith(prefix) || message.author.bot) return;
 
@@ -43,7 +43,7 @@ client.on('message', message => {
     if (!command) return;
 
     //If tutoronly is set in the command, only tutors should be able to run it.
-    if (command.tutoronly && !message.member.roles.cache.some(role => role.name === "Tutor")){
+    if (command.tutoronly && !message.member.roles.cache.some(role => role.name === "Tutor")) {
 
         return channelUtils.reply(message, "du har ikke rettigheder til at anvende denne kommando");
     }
@@ -59,8 +59,8 @@ client.on('message', message => {
     }
 
     //Execute matched command
-    try{
-        command.execute(message,args);
+    try {
+        command.execute(message, args);
     } catch (error) {
         console.error(error);
         channelUtils.reply(message, "Kommandoen eksisterer ikke")

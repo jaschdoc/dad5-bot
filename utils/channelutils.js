@@ -1,14 +1,14 @@
-const {kammerid} = require('../config.json');
+const { kammerid } = require('../config.json');
 module.exports = {
-    clear:function(channel, messages) {
-        channel.bulkDelete(messages)	
+    clear: function (channel, messages) {
+        channel.bulkDelete(messages)
     },
-    sendMessage:sendMessage,
-    reply:reply,
-    dm:dm,
-    mention:mention,
-    sendMention:sendMentionMessage,
-    superscript:superscript
+    sendMessage: sendMessage,
+    reply: reply,
+    dm: dm,
+    mention: mention,
+    sendMention: sendMentionMessage,
+    superscript: superscript
 }
 
 function superscript(n) {
@@ -22,20 +22,20 @@ function superscript(n) {
 
     return res;
 }
-function reply(message, reply){
+function reply(message, reply) {
     reply = sanitize(message.channel, reply);
     message.reply(reply);
 }
 
-function sendMessage(channel, message){
+function sendMessage(channel, message) {
     message = message.toString();
     message = sanitize(channel, message)
     channel.send(message);
 }
 
-function dm(message, privateText, publicText){
+function dm(message, privateText, publicText) {
     publicText = sanitize(message.channel, publicText);
-    message.author.send(privateText, {split: true}).then(() => {
+    message.author.send(privateText, { split: true }).then(() => {
         if (message.channel.type === 'dm') return;
         console.log("Got here: " + publicText);
         message.reply(publicText);
@@ -47,10 +47,10 @@ function dm(message, privateText, publicText){
 }
 
 //Makes TÅGEKAMMERET uppercase, and replaces sigmas by S if on #Kammeret
-function sanitize(channel, text){
+function sanitize(channel, text) {
     text = text.replace(/T(Å|AA)GEKAMMER/i, "TÅGEKAMMER");
-    if (channel.id === kammerid){
-        text = text.replace(/(Σ|∑|𝚺|𝛴|𝜮|𝞢|⅀)/,"S");
+    if (channel.id === kammerid) {
+        text = text.replace(/(Σ|∑|𝚺|𝛴|𝜮|𝞢|⅀)/, "S");
     }
     return text;
 }
