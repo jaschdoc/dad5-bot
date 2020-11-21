@@ -3,7 +3,7 @@
 	"version": "1.0.0",
 	"description": "A bot to play around and have fun with",
 	"main": "bot.js",
-	"author": "fjerbaek",
+	"author": "fjerbaek, dat5",
 	"dependencies": {
 		"discord.js": "^12.1.1",
 		"mongoose": "^5.9.7"
