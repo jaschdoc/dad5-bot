@@ -19,11 +19,11 @@ These are the steps you should complete before installing any software.
 
 Please check out the [discord.js guide](https://discordjs.guide) if you're unsure on how to get started or if you're stuck (see subsections of Installtions and Preparations).
 
-# Dependencies
+## Dependencies
 - [Node.js](https://nodejs.org/)
 - [Mongodb](https://www.mongodb.com)
 
-# Usage
+## Usage
 To run this bot do either of the follwing:
 
 ### Without docker and docker-compose
