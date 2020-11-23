@@ -20,7 +20,7 @@ These are the steps you should complete before installing any software.
 
 Please check out the [discord.js guide](https://discordjs.guide) if you're unsure on how to get started or if you're stuck (see subsections of Installtions and Preparations).
 
-Lastly, make sure you have Docker installed if you want to run the bot in the most hassle-free way.
+Lastly, make sure you have [Docker](https://www.docker.com/) installed if you want to run the bot in the most hassle-free way.
 
 ----
 
