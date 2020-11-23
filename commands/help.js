@@ -3,7 +3,7 @@ const { prefix } = require('../config.json');
 module.exports = {
     name: 'help',
     description: 'Skriver alle gyldige kommandoer',
-    aliases: ['commands'],
+    aliases: ['commands', 'h'],
     usage: '[kommando]',
     execute(message, args) {
         const data = [];
