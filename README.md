@@ -18,7 +18,7 @@ These are the steps you should complete before installing any software.
     2. Replace `YOUR_CLIENT_ID` with your actual discord application client ID you just obtained in the following string:
     `https://discord.com/oauth2/authorize?client_id=YOUR_CLIENT_ID&scope=bot`
 
-Please check out the [discord.js guide](https://discordjs.guide) if you're unsure on how to get started or if you're stuck (see subsections of Installtions and Preparations).
+Please check out the [discord.js guide](https://discordjs.guide) if you're unsure on how to get started or if you're stuck (see subsections of Installations and Preparations).
 
 Lastly, make sure you have [Docker](https://www.docker.com/) installed if you want to run the bot in the most hassle-free way.
 
