@@ -1,7 +1,8 @@
 # Dad5Bot 
-A discord bot for Klandringer   
+A discord bot made for and by Dat5 to have fun and experiment with.
+ 
 Created with [Discord.js](https://discord.js.org/#/).
-To get understanding of the project, please follow [this guide](https://discordjs.guide/)
+To get understanding of the project, please follow [this guide](https://discordjs.guide/).
 
 # Getting started
 These are the pre-requisites for running the bot. There are installation instructions below, however, you should have setup an application & bot in the discord developer controls.
@@ -19,22 +20,16 @@ These are the steps you should complete before installing any software.
 
 Please check out the [discord.js guide](https://discordjs.guide) if you're unsure on how to get started or if you're stuck (see subsections of Installtions and Preparations).
 
+Lastly, make sure you have Docker installed if you want to run the bot in the most hassle-free way.
+
+----
+
 ## Dependencies
 - [Node.js](https://nodejs.org/)
 - [Mongodb](https://www.mongodb.com)
 
 ## Usage
 To run this bot do either of the follwing:
-
-### Without docker and docker-compose
-- Install node.js
-- Install mongodb
-- OPTIONAL: `npm install nodemon --global` If you want nodemon to rerun bot on file changes
-- `npm install`
-- Setup `config.json_template` and rename to `config.json` 
-- Run instance of `mongod`
-- Run `mongo < dbsetup.js`
-- Run `node bot.js` or `nodemon bot.js`
 
 ### With docker and docker-compose
 This is experimental
@@ -43,6 +38,16 @@ This is experimental
 - Run `docker-compose up`
 - Run `docker-compose exec mongodb mongo < dbsetup.js` (Only on first run)
 - Run `docker-compose down` to stop the bot
+----
+### Manual / Native installation
+- Install node.js
+- Install mongodb
+- OPTIONAL: `npm install nodemon --global` If you want nodemon to rerun bot on file changes
+- `npm install`
+- Setup `config.json_template` and rename to `config.json` 
+- Run instance of `mongod`
+- Run `mongo < dbsetup.js`
+- Run `node bot.js` or `nodemon bot.js`
 
 ### Nodemon configuration
 If using nodemon (The docker setup does so), you can setup [nodemon.json](./nodemon.json) to watch files and automatically reload them on save.
