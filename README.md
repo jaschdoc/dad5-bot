@@ -1,6 +1,6 @@
 # Dad5Bot 
 A discord bot made for and by Dat5 to have fun and experiment with.
- 
+
 Created with [Discord.js](https://discord.js.org/#/).
 To get understanding of the project, please follow [this guide](https://discordjs.guide/).
 
@@ -32,7 +32,6 @@ Lastly, make sure you have Docker installed if you want to run the bot in the mo
 To run this bot do either of the follwing:
 
 ### With docker and docker-compose
-This is experimental
 - Setup `config.json_template` and rename to `config.json`
     - Note: The token is found in discord's developer controls under your application's bot
 - Run `docker-compose up`
