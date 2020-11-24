@@ -42,12 +42,6 @@ client.on('message', message => {
         || client.commands.find(cmd => cmd.aliases && cmd.aliases.includes(commandName));
     if (!command) return;
 
-    //If tutoronly is set in the command, only tutors should be able to run it.
-    if (command.tutoronly && !message.member.roles.cache.some(role => role.name === "Tutor")) {
-
-        return channelUtils.reply(message, "du har ikke rettigheder til at anvende denne kommando");
-    }
-
     //If command must have arguments (command.args = true), enforce it:
     if (command.args && !args.length) {
         let reply = "du mangler at angive et argument.";
