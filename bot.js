@@ -9,7 +9,7 @@ const cooldowns = new Discord.Collection();
 
 const commandFiles = fs.readdirSync('./commands').filter(file => file.endsWith('.js'));
 
-//Sets path for command files
+// Sets path for command files
 for (const file of commandFiles) {
     const command = require('./commands/' + file);
     client.commands.set(command.name, command);
@@ -22,27 +22,27 @@ client.once('ready', () => {
 
 client.login(token);
 
-//Parses messages sent 
+// Parses messages sent 
 client.on('message', message => {
 
-    //Breaks early if message does not start with prefix or if message is from a bot
+    // Breaks early if message does not start with prefix or if message is from a bot
     if (!message.content.startsWith(prefix) || message.author.bot) return;
 
-    //Splits message into arguments 
+    // Splits message into arguments 
     const args = message.content.slice(prefix.length).split(/ +/);
 
-    //Commands should be case insensitive 
+    // Commands should be case insensitive 
     const commandName = args.shift().toLowerCase();
 
 
     const channel = message.channel;
 
-    //matches commandname with name of commands or their aliases (can be set in commmand file)
+    // Matches commandname with name of commands or their aliases (can be set in commmand file)
     const command = client.commands.get(commandName)
         || client.commands.find(cmd => cmd.aliases && cmd.aliases.includes(commandName));
     if (!command) return;
 
-    //If command must have arguments (command.args = true), enforce it:
+    // If command must have arguments (command.args = true), enforce it:
     if (command.args && !args.length) {
         let reply = "du mangler at angive et argument.";
 
@@ -52,7 +52,7 @@ client.on('message', message => {
         return message.reply(reply);
     }
 
-    //Execute matched command
+    // Execute matched command
     try {
         command.execute(message, args);
     } catch (error) {
