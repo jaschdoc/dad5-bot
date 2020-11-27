@@ -8,7 +8,9 @@ module.exports = {
         const reply = new Array();
         const { commands } = message.client;
 
-        reply.push(`These are all the commands available. Type \`${prefix}help [command]\` for detailed information of specific command.`);
+        reply.push(`These are all the commands available.`)
+        reply.push(`Type \`${prefix}help [command]\` for detailed information of specific command.`);
+        reply.push('');
 
         commands.forEach(cmd => {
             reply.push(`- \`${cmd.name}\``)
@@ -18,9 +20,9 @@ module.exports = {
                 reply.push(`    Aliases: None, get to work`)
             }
             reply.push(`    ${cmd.description}`)
-            reply.push('\n')
+            reply.push('');
         });
 
-        return message.reply(reply);
+        return message.channel.send(reply);
     }
 };
