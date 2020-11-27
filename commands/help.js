@@ -15,6 +15,7 @@ module.exports = {
 
             commands.forEach(cmd => {
                 reply.push(`- \`${cmd.name}\``)
+                reply.push(`    Usage: \`${cmd.name} ${cmd.usage}\``)
                 if (cmd.alias) {
                     reply.push(`    Aliases: ${cmd.alias}`)
                 } else {
@@ -34,6 +35,9 @@ module.exports = {
 
         // If args is a real command, then print info for it
         if (command) {
+            // alias
+            // usage
+            // description
             return message.channel.send(command.name);
         }
 
