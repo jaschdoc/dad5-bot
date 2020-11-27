@@ -4,6 +4,9 @@
 	"description": "A bot to play around and have fun with",
 	"main": "bot.js",
 	"author": "fjerbaek, dat5",
+	"scripts": {
+		"watch": "nodemon bot.js"
+	},
 	"dependencies": {
 		"discord.js": "^12.1.1",
 		"mongoose": "^5.10.16"
