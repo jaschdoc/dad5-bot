@@ -8,9 +8,14 @@ module.exports = {
         const reply = new Array();
         const { commands } = message.client;
 
-        reply.push(`These are all the commands available. Type ${prefix}help [command] for detailed information of specific command.`)
+        reply.push(`These are all the commands available. Type \`${prefix}help [command]\` for detailed information of specific command.`);
+
+        commands.forEach(cmd => {
+            reply.push(`- \`${cmd.name}\``)
+            reply.push(cmd.description)
+            reply.push('\n')
+        });
 
         return message.reply(reply);
     }
 };
-
