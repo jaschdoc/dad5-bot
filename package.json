@@ -5,7 +5,9 @@
 	"main": "bot.js",
 	"author": "fjerbaek, dat5",
 	"dependencies": {
-		"discord.js": "^12.1.1",
-		"mongoose": "^5.9.7"
+		"discord.js": "^12.1.1"
+	},
+	"devDependencies": {
+		"nodemon": "^2.0.6"
 	}
 }
