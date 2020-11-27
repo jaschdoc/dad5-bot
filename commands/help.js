@@ -12,7 +12,12 @@ module.exports = {
 
         commands.forEach(cmd => {
             reply.push(`- \`${cmd.name}\``)
-            reply.push(cmd.description)
+            if (cmd.alias) {
+                reply.push(`    Aliases: ${cmd.alias}`)
+            } else {
+                reply.push(`    Aliases: None, get to work`)
+            }
+            reply.push(`    ${cmd.description}`)
             reply.push('\n')
         });
 
