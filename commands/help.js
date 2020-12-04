@@ -48,13 +48,13 @@ function getCommandInfo(command) {
     const reply = new Array();
 
     reply.push(`\`${command.name}\``)
-                reply.push(`    Usage: \`${command.name} ${command.usage}\``)
+                reply.push(` - Usage: \`${command.name} ${command.usage}\``)
                 if (command.alias) {
-                    reply.push(`    Aliases: ${command.alias}`)
+                    reply.push(` - Aliases: ${command.alias}`)
                 } else {
-                    reply.push(`    Aliases: None, get to work`)
+                    reply.push(` - Aliases: None, get to work`)
                 }
-                reply.push(`    ${command.description}`)
+                reply.push(` - ${command.description}`)
                 reply.push('');
 
     return reply;
