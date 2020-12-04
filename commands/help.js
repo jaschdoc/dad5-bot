@@ -36,13 +36,26 @@ module.exports = {
 
         // If args is a real command, then print info for it
         if (command) {
-            // alias
-            // usage
-            // description
-            return message.channel.send(command.name);
+            return message.channel.send(getCommandInfo(command));
         }
 
 
         // Else print error help message
-    }
+    },
 };
+
+function getCommandInfo(command) {
+    const reply = new Array();
+
+    reply.push(`\`${command.name}\``)
+                reply.push(`    Usage: \`${command.name} ${command.usage}\``)
+                if (command.alias) {
+                    reply.push(`    Aliases: ${command.alias}`)
+                } else {
+                    reply.push(`    Aliases: None, get to work`)
+                }
+                reply.push(`    ${command.description}`)
+                reply.push('');
+
+    return reply;
+}
