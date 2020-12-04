@@ -15,15 +15,8 @@ module.exports = {
             reply.push('');
 
             commands.forEach(cmd => {
-                reply.push(`- \`${cmd.name}\``)
-                reply.push(`    Usage: \`${cmd.name} ${cmd.usage}\``)
-                if (cmd.alias) {
-                    reply.push(`    Aliases: ${cmd.alias}`)
-                } else {
-                    reply.push(`    Aliases: None, get to work`)
-                }
-                reply.push(`    ${cmd.description}`)
-                reply.push('');
+                let info = getCommandInfo(cmd);
+                info.forEach(info => reply.push(info));
             });
 
             return message.channel.send(reply);
