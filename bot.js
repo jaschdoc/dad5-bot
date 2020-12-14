@@ -35,9 +35,6 @@ client.on('message', message => {
     // Commands should be case insensitive 
     const commandName = args.shift().toLowerCase();
 
-
-    const channel = message.channel;
-
     // Matches commandname with name of commands or their aliases (can be set in commmand file)
     const command = client.commands.get(commandName)
         || client.commands.find(cmd => cmd.aliases && cmd.aliases.includes(commandName));
