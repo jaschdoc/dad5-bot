@@ -1,36 +1,54 @@
-const channelUtils = require('../utils/channelutils')
 const prefix = process.env.PREFIX;
 
 module.exports = {
     name: 'help',
-    description: 'Skriver alle gyldige kommandoer',
-    aliases: ['commands', 'h'],
-    usage: '[kommando]',
-    execute(message, args) {
-        const data = [];
+    usage: '[command]',
+    description: 'Prints help information for commands',
+    alias: ['h', 'yelp', 'techsupport', 'commands'],
+    async execute(message, args) {
+        const reply = new Array();
         const { commands } = message.client;
 
         if (!args.length) {
-            data.push("Dad5 v.1.0");
-            data.push("Kommandoer:");
-            data.push(commands.filter(cmd => !cmd.hidden).map(command => command.name).join(', '));
-            data.push("\nSkriv " + prefix + "help [kommando] for at få information om en specifik kommando!");
-            return channelUtils.dm(message, data, "jeg har sendt dig en DM med alle kommandoer");
-        }
-        const name = args[0].toLowerCase();
+            reply.push(`These are all the commands available.`)
+            reply.push(`Type \`${prefix}help [command]\` for detailed information of specific command.`);
+            reply.push('');
 
-        //Matches command if not hidden
-        const command = commands.filter(cmd => !cmd.hidden).get(name) || commands.find(c => c.aliases && c.aliases.includes(name));
+            commands.forEach(cmd => {
+                let info = getCommandInfo(cmd);
+                info.forEach(info => reply.push(info));
+            });
 
-        if (!command) {
-            return message.reply("Det er ikke en gyldig kommando!");
+            return message.channel.send(reply);
         }
 
-        data.push("**Navn:** " + command.name + "\n");
+        const commandName = args.shift();
 
-        if (command.aliases) data.push("**Aliasser:** " + command.aliases.join(", ") + "\n");
-        if (command.usage) data.push("**Brug:** " + prefix + command.name + command.usage + "\n");
-        if (command.description) data.push("**Beskrivelse:** " + command.description + "\n");
-        channelUtils.sendMessage(message.channel, data.join(""));
-    }
+        const command = commands.find(cmd => cmd.name === commandName);
+
+
+        // If args is a real command, then print info for it
+        if (command) {
+            return message.channel.send(getCommandInfo(command));
+        }
+
+
+        // Else print error help message
+    },
 };
+
+function getCommandInfo(command) {
+    const reply = new Array();
+
+    reply.push(`\`${command.name}\``)
+                reply.push(` - Usage: \`${command.name} ${command.usage}\``)
+                if (command.alias) {
+                    reply.push(` - Aliases: ${command.alias}`)
+                } else {
+                    reply.push(` - Aliases: None, get to work`)
+                }
+                reply.push(` - ${command.description}`)
+                reply.push('');
+
+    return reply;
+}
