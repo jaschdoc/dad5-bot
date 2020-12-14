@@ -21,8 +21,6 @@ These are the steps you should complete before installing any software.
 
 Please check out the [discord.js guide](https://discordjs.guide) if you're unsure on how to get started or if you're stuck (see subsections of Installations and Preparations).
 
-Lastly, make sure you have [Docker](https://www.docker.com/) installed if you want to run the bot in the most hassle-free way.
-
 ----
 
 ## Dependencies
@@ -32,6 +30,14 @@ Lastly, make sure you have [Docker](https://www.docker.com/) installed if you wa
 ## Usage
 To run this bot do either of the follwing:
 
+### Manual / Native installation
+- Install node.js
+- Run `npm install`
+- Setup `config.json_template` and rename to `config.json` 
+- Run instance of `mongod`
+- Run `mongo < dbsetup.js`
+- Run `node bot.js` or `nodemon bot.js`
+
 ### With docker and docker-compose
 - Setup `config.json_template` and rename to `config.json`
     - Note: The token is found in discord's developer controls under your application's bot
@@ -39,15 +45,6 @@ To run this bot do either of the follwing:
 - Run `docker-compose exec mongodb mongo < dbsetup.js` (Only on first run)
 - Run `docker-compose down` to stop the bot
 ----
-### Manual / Native installation
-- Install node.js
-- Install mongodb
-- OPTIONAL: `npm install nodemon --global` If you want nodemon to rerun bot on file changes
-- `npm install`
-- Setup `config.json_template` and rename to `config.json` 
-- Run instance of `mongod`
-- Run `mongo < dbsetup.js`
-- Run `node bot.js` or `nodemon bot.js`
 
 ### Nodemon configuration
 If using nodemon (The docker setup does so), you can setup [nodemon.json](./nodemon.json) to watch files and automatically reload them on save.
