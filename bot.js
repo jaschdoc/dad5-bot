@@ -38,7 +38,7 @@ client.on('message', message => {
     // Matches commandname with name of commands or their aliases (can be set in commmand file)
     const command = client.commands.get(commandName)
         || client.commands.find(cmd => cmd.aliases && cmd.aliases.includes(commandName));
-    // if (!command) return;
+    if (!command) return;
 
     // If command must have arguments (command.args = true), enforce it:
     if (command && command.args && !args.length) {
@@ -55,6 +55,6 @@ client.on('message', message => {
         command.execute(message, args);
     } catch (error) {
         console.error(error);
-        message.reply(`Command \`${commandName}\` does not exist`)
+        message.reply(`Something went wrong. Please try again`);
     }
 });
