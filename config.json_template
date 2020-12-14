@@ -1,6 +1,0 @@
-{
-        "prefix": "!",
-        "token": "BotToken",
-        "dbPort": 27017,
-        "dbName": "Dad5"
-}

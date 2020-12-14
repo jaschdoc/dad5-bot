@@ -6,6 +6,6 @@ module.exports = {
     aliases: ['k'],
     description: 'Se alle klandringer',
     async execute(message, args) {
-        klandringer.print().then(msg => message.reply(msg));
+        klandringer.collect().then(msg => message.reply(msg));
     }
 };

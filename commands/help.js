@@ -1,4 +1,4 @@
-const { prefix } = require('../config.json');
+const prefix = process.env.PREFIX;
 
 module.exports = {
     name: 'help',
@@ -15,15 +15,8 @@ module.exports = {
             reply.push('');
 
             commands.forEach(cmd => {
-                reply.push(`- \`${cmd.name}\``)
-                reply.push(`    Usage: \`${cmd.name} ${cmd.usage}\``)
-                if (cmd.alias) {
-                    reply.push(`    Aliases: ${cmd.alias}`)
-                } else {
-                    reply.push(`    Aliases: None, get to work`)
-                }
-                reply.push(`    ${cmd.description}`)
-                reply.push('');
+                let info = getCommandInfo(cmd);
+                info.forEach(info => reply.push(info));
             });
 
             return message.channel.send(reply);
@@ -34,15 +27,31 @@ module.exports = {
         const command = commands.find(cmd => cmd.name === commandName);
 
 
+
         // If args is a real command, then print info for it
         if (command) {
-            // alias
-            // usage
-            // description
-            return message.channel.send(command.name);
+            return message.channel.send(getCommandInfo(command));
+
         }
 
 
         // Else print error help message
-    }
+
+    },
 };
+
+function getCommandInfo(command) {
+    const reply = new Array();
+
+    reply.push(`\`${command.name}\``)
+                reply.push(` - Usage: \`${command.name} ${command.usage}\``)
+                if (command.alias) {
+                    reply.push(` - Aliases: ${command.alias}`)
+                } else {
+                    reply.push(` - Aliases: None, get to work`)
+                }
+                reply.push(` - ${command.description}`)
+                reply.push('');
+
+    return reply;
+}

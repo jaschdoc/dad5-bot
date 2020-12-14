@@ -3,6 +3,7 @@
     "watch": [
         "*.js",
         "commands/*.js",
-        "utils/*.js"
+        "utils/*.js",
+        "models/*.js"
     ]
 }
