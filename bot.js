@@ -2,8 +2,6 @@ const fs = require('fs');
 const Discord = require('discord.js');
 require('dotenv').config();
 const prefix = process.env.PREFIX;
-// const { prefix, token, dbURL, dbPort } = require('./config.json');
-
 
 const client = new Discord.Client();
 client.commands = new Discord.Collection();
@@ -23,7 +21,7 @@ client.once('ready', () => {
     console.log('Ready for commands.');
 });
 
-client.login(process.env.BOTTOKEN);
+client.login(process.env.BOT_TOKEN);
 
 // Parses messages sent 
 client.on('message', message => {
