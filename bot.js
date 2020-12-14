@@ -56,6 +56,5 @@ client.on('message', message => {
     } catch (error) {
         console.error(error);
         channelUtils.reply(message, "Kommandoen eksisterer ikke")
-
     }
 });
