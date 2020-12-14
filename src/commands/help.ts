@@ -1,11 +1,9 @@
-const prefix = process.env.PREFIX;
-
 module.exports = {
     name: 'help',
     usage: '[command]',
     description: 'Prints help information for commands',
     alias: ['h', 'yelp', 'techsupport', 'commands'],
-    async execute(message, args) {
+    async execute(message: any, args: any) {
         const reply = new Array();
         const { commands } = message.client;
 
@@ -14,7 +12,7 @@ module.exports = {
             reply.push(`Type \`${prefix}help [command]\` for detailed information of specific command.`);
             reply.push('');
 
-            commands.forEach(cmd => {
+            commands.forEach((cmd: any) => {
                 let info = getCommandInfo(cmd);
                 info.forEach(info => reply.push(info));
             });
@@ -24,7 +22,7 @@ module.exports = {
 
         const commandName = args.shift();
 
-        const command = commands.find(cmd => cmd.name === commandName);
+        const command = commands.find((cmd: any) => cmd.name === commandName);
 
 
 
@@ -40,7 +38,7 @@ module.exports = {
     },
 };
 
-function getCommandInfo(command) {
+function getCommandInfo(command: any) {
     const reply = new Array();
 
     reply.push(`\`${command.name}\``)
