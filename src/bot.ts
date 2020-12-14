@@ -1,14 +1,14 @@
 const fs = require('fs');
 const Discord = require('discord.js');
 require('dotenv').config();
-const prefix = process.env.PREFIX;
+const prefix: string = process.env.PREFIX!;
 
 const client = new Discord.Client();
 client.commands = new Discord.Collection();
 const timers = new Discord.Collection();
 const cooldowns = new Discord.Collection();
 
-const commandFiles = fs.readdirSync('./commands').filter(file => file.endsWith('.js'));
+const commandFiles = fs.readdirSync('.commands').filter((file: string) => file.endsWith('.js'));
 
 // Sets path for command files
 for (const file of commandFiles) {
@@ -24,7 +24,7 @@ client.once('ready', () => {
 client.login(process.env.BOT_TOKEN);
 
 // Parses messages sent 
-client.on('message', message => {
+client.on('message', (message: any) => {
 
     // Breaks early if message does not start with prefix or if message is from a bot
     if (!message.content.startsWith(prefix) || message.author.bot) return;
@@ -37,7 +37,7 @@ client.on('message', message => {
 
     // Matches commandname with name of commands or their aliases (can be set in commmand file)
     const command = client.commands.get(commandName)
-        || client.commands.find(cmd => cmd.aliases && cmd.aliases.includes(commandName));
+        || client.commands.find((cmd: any) => cmd.aliases && cmd.aliases.includes(commandName));
     if (!command) return;
 
     // If command must have arguments (command.args = true), enforce it:
