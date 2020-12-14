@@ -36,10 +36,6 @@ To run this bot do either of the follwing:
 - Set up a `.env`-file. Refer to [.env_sample](.env_sample). Please note, that only `PREFIX` and `BOT_TOKEN` are required at this stage.
 - Run `npm run watch`. This will watch the project files for changes and run the bot with those changes. *Note: This will take up your terminal, so you may want to open a new one.*
 
-### Nodemon configuration
-If using nodemon (The docker setup does so), you can setup [nodemon.json](./nodemon.json) to watch files and automatically reload them on save.
-To do so, delete the line `"ignore":"[*]"` and add files/paths to watch to `watch`.
-
 ---
 
 ### NOT CURRENTLY WORKING
