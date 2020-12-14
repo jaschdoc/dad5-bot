@@ -6,7 +6,8 @@
 	"author": "fjerbaek, dat5",
 	"scripts": {
 		"build": "tsc",
-		"watch": "tsc --watch && nodemon bot.js"
+		"start": "tsc && node dist/bot.js",
+		"watch": "nodemon --exec \"npm run start\" src/**/*.ts"
 	},
 	"dependencies": {
 		"discord.js": "^12.1.1",
