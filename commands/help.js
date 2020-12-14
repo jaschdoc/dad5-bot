@@ -27,13 +27,16 @@ module.exports = {
         const command = commands.find(cmd => cmd.name === commandName);
 
 
+
         // If args is a real command, then print info for it
         if (command) {
             return message.channel.send(getCommandInfo(command));
+
         }
 
 
         // Else print error help message
+
     },
 };
 
