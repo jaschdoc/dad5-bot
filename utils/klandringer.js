@@ -3,7 +3,7 @@ const Klandring = require('../models/klandring.js');
 
 module.exports = {
     addKlandring: addKlandring,
-    print: print
+    collect: print
 }
 
 
