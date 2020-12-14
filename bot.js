@@ -35,20 +35,17 @@ client.on('message', message => {
     // Commands should be case insensitive 
     const commandName = args.shift().toLowerCase();
 
-
-    const channel = message.channel;
-
     // Matches commandname with name of commands or their aliases (can be set in commmand file)
     const command = client.commands.get(commandName)
         || client.commands.find(cmd => cmd.aliases && cmd.aliases.includes(commandName));
     if (!command) return;
 
     // If command must have arguments (command.args = true), enforce it:
-    if (command.args && !args.length) {
-        let reply = "du mangler at angive et argument.";
+    if (command && command.args && !args.length) {
+        let reply = `You must specify an argument with this command.`;
 
         if (command.usage) {
-            reply += "\nKorrekt brug er: " + prefix + command.name + " " + command.usage;
+            reply += `\nUsage: \`${prefix} ${command.name} ${command.usage}\``;
         }
         return message.reply(reply);
     }
@@ -58,7 +55,6 @@ client.on('message', message => {
         command.execute(message, args);
     } catch (error) {
         console.error(error);
-        channelUtils.reply(message, "Kommandoen eksisterer ikke")
-
+        message.reply(`Something went wrong. Please try again`);
     }
 });
