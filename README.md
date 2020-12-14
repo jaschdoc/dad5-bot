@@ -33,13 +33,3 @@ Please check out the [discord.js guide](https://discordjs.guide) if you're unsur
 ## Dependencies
 - [Node.js](https://nodejs.org/)
 - [Mongodb](https://www.mongodb.com)
-
----
-
-### NOT CURRENTLY WORKING
-### ~~With docker and docker-compose~~
-- Setup `config.json_template` and rename to `config.json`
-    - Note: The token is found in discord's developer controls under your application's bot
-- Run `docker-compose up`
-- Run `docker-compose exec mongodb mongo < dbsetup.js` (Only on first run)
-- Run `docker-compose down` to stop the bot
