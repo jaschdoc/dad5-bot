@@ -10,7 +10,7 @@ These are the pre-requisites for running the bot. There are installation instruc
 Furthermore, setting up a separate server on Discord just for testing the bot is a good idea.
 
 These are the steps you should complete before installing any software.
-1. Set up a discord testing server (simply create a new one with only you in it)
+1. Set up a discord testing server (simply create a new server with only you in it)
 2. Create a discord app
 3. Create a bot
 4. Add your bot to your test server (there are multiple steps to this)
