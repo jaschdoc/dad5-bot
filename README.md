@@ -32,11 +32,9 @@ To run this bot do either of the follwing:
 
 ### Manual / Native installation
 - Install node.js
-- Run `npm install`
-- Setup `config.json_template` and rename to `config.json` 
-- Run instance of `mongod`
-- Run `mongo < dbsetup.js`
-- Run `node bot.js` or `nodemon bot.js`
+- Run `npm install` in the root of the project directory
+- Set up a `.env`-file. Refer to [.env_sample](.env_sample). Please note, that only `PREFIX` and `BOT_TOKEN` are required at this stage.
+- Run `npm run watch`. This will watch the project files for changes and run the bot with those changes. *Note: This will take up your terminal, so you may want to open a new one.*
 
 ### With docker and docker-compose
 - Setup `config.json_template` and rename to `config.json`
