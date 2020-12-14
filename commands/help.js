@@ -1,5 +1,5 @@
 const channelUtils = require('../utils/channelutils')
-const { prefix } = require('../config.json');
+const prefix = process.env.PREFIX;
 module.exports = {
     name: 'help',
     description: 'Skriver alle gyldige kommandoer',

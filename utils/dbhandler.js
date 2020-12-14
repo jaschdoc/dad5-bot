@@ -1,5 +1,7 @@
 const mongoose = require('mongoose');
-const { dbURL, dbPort, dbName } = require('../config.json');
+const dbURL = process.env.DBURL;
+const dbPort = process.env.DBPORT;
+const dbName = process.env.DBNAME;
 mongoose.connect("mongodb://" + dbURL + ":" + dbPort + "/" + dbName, { useNewUrlParser: true, useUnifiedTopology: true }).then(() => console.log("Successfully connected to database")).catch(err => console.log(err));
 
 module.exports = {
