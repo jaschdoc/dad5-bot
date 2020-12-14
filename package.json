@@ -5,7 +5,8 @@
 	"main": "dist/bot.js",
 	"author": "fjerbaek, dat5",
 	"scripts": {
-		"watch": "nodemon bot.js"
+		"build": "tsc",
+		"watch": "tsc --watch && nodemon bot.js"
 	},
 	"dependencies": {
 		"discord.js": "^12.1.1",
