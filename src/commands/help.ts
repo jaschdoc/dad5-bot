@@ -1,10 +1,14 @@
-module.exports = {
+import { Command } from './command.interface';
+
+import { prefix } from '../bot';
+
+export const help: Command = {
     name: 'help',
     usage: '[command]',
     description: 'Prints help information for commands',
     alias: ['h', 'yelp', 'techsupport', 'commands'],
     async execute(message: any, args: any) {
-        const reply = new Array();
+        const reply: string[] = [];
         const { commands } = message.client;
 
         if (!args.length) {
@@ -35,21 +39,21 @@ module.exports = {
 
         // Else print error help message
 
-    },
-};
+    }
+}
 
 function getCommandInfo(command: any) {
     const reply = new Array();
 
     reply.push(`\`${command.name}\``)
-                reply.push(` - Usage: \`${command.name} ${command.usage}\``)
-                if (command.alias) {
-                    reply.push(` - Aliases: ${command.alias}`)
-                } else {
-                    reply.push(` - Aliases: None, get to work`)
-                }
-                reply.push(` - ${command.description}`)
-                reply.push('');
+    reply.push(` - Usage: \`${command.name} ${command.usage}\``)
+    if (command.alias) {
+        reply.push(` - Aliases: ${command.alias}`)
+    } else {
+        reply.push(` - Aliases: None, get to work`)
+    }
+    reply.push(` - ${command.description}`)
+    reply.push('');
 
     return reply;
 }
