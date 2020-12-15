@@ -7,6 +7,7 @@ export const help: Command = {
     usage: '[command]',
     description: 'Prints help information for commands',
     alias: ['h', 'yelp', 'techsupport', 'commands'],
+    args: false,
     async execute(message: any, args: any) {
         const reply: string[] = [];
         const { commands } = message.client;

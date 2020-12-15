@@ -7,9 +7,9 @@ export interface Command {
 
     description: string;
 
-    alias?: string[];
+    alias: string[];
 
-    args?: boolean;
+    args: boolean;
 
     execute(message: any, args: any): Promise<void>;
 }

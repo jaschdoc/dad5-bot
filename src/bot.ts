@@ -1,4 +1,4 @@
-import Discord, { Client, Collection } from 'discord.js';
+import Discord, { Client, Collection, Message } from 'discord.js';
 import { Command, commandCollection } from './commands/commands';
 import dotenv from 'dotenv';
 dotenv.config();
@@ -16,25 +16,25 @@ client.once('ready', () => {
 client.login(process.env.BOT_TOKEN);
 
 // Parses messages sent 
-client.on('message', (message: any) => {
+client.on('message', (message: Message) => {
 
     // Breaks early if message does not start with prefix or if message is from a bot
     if (!message.content.startsWith(prefix) || message.author.bot) return;
 
     // Splits message into arguments 
-    const args = message.content.slice(prefix.length).split(/ +/);
+    const args: string[] = message.content.slice(prefix.length).split(/ +/);
 
     // Commands should be case insensitive 
-    const commandName = args.shift().toLowerCase();
+    const commandName: string = args.shift()?.toLocaleLowerCase() || '';
 
     // Matches commandname with name of commands or their aliases (can be set in commmand file)
-    const command = commands.get(commandName)
-        || commands.find((cmd: any) => cmd.aliases && cmd.aliases.includes(commandName));
+    const command: Command | undefined = commands.get(commandName)
+        || commands.find((cmd: Command) => cmd.alias.includes(commandName));
     if (!command) return;
 
     // If command must have arguments (command.args = true), enforce it:
     if (command && command.args && !args.length) {
-        let reply = `You must specify an argument with this command.`;
+        let reply: string = `You must specify an argument with this command.`;
 
         if (command.usage) {
             reply += `\nUsage: \`${prefix} ${command.name} ${command.usage}\``;
