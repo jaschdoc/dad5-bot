@@ -4,7 +4,6 @@
 	"description": "A bot to play around and have fun with",
 	"main": "dist/bot.js",
 	"author": "fjerbaek, dat5",
-	"type": "module",
 	"scripts": {
 		"build": "tsc",
 		"start": "tsc && node dist/bot.js",
