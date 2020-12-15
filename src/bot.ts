@@ -1,19 +1,19 @@
-const fs = require('fs');
-const Discord = require('discord.js');
-require('dotenv').config();
-const prefix: string = process.env.PREFIX!;
+import fs from 'fs';
+import Discord, { Client, Collection } from 'discord.js';
+import { Command } from './commands/command.interface';
+import dotenv from 'dotenv';
+dotenv.config();
+export const prefix: string = process.env.PREFIX!;
 
-const client = new Discord.Client();
-client.commands = new Discord.Collection();
-const timers = new Discord.Collection();
-const cooldowns = new Discord.Collection();
+const client: Client = new Discord.Client();
+const commands: Collection<string, Command> = new Discord.Collection();
 
 const commandFiles = fs.readdirSync('./commands').filter((file: string) => file.endsWith('.js'));
 
 // Sets path for command files
 for (const file of commandFiles) {
     const command = require('./commands/' + file);
-    client.commands.set(command.name, command);
+    commands.set(command.name, command);
 }
 
 
@@ -36,8 +36,8 @@ client.on('message', (message: any) => {
     const commandName = args.shift().toLowerCase();
 
     // Matches commandname with name of commands or their aliases (can be set in commmand file)
-    const command = client.commands.get(commandName)
-        || client.commands.find((cmd: any) => cmd.aliases && cmd.aliases.includes(commandName));
+    const command = commands.get(commandName)
+        || commands.find((cmd: any) => cmd.aliases && cmd.aliases.includes(commandName));
     if (!command) return;
 
     // If command must have arguments (command.args = true), enforce it:
