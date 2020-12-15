@@ -1,4 +1,4 @@
-import { Command } from './command.interface';
+import { Command } from './commands';
 
 import { prefix } from '../bot';
 

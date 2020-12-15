@@ -1,3 +1,5 @@
+import { help } from './help';
+
 export interface Command {
     name: string;
 
@@ -11,3 +13,7 @@ export interface Command {
 
     execute(message: any, args: any): Promise<void>;
 }
+
+export const commandCollection: Command[] = [
+    help
+];

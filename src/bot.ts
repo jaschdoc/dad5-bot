@@ -1,6 +1,5 @@
-import fs from 'fs';
 import Discord, { Client, Collection } from 'discord.js';
-import { Command } from './commands/command.interface';
+import { Command, commandCollection } from './commands/commands';
 import dotenv from 'dotenv';
 dotenv.config();
 export const prefix: string = process.env.PREFIX!;
@@ -8,14 +7,7 @@ export const prefix: string = process.env.PREFIX!;
 const client: Client = new Discord.Client();
 const commands: Collection<string, Command> = new Discord.Collection();
 
-const commandFiles = fs.readdirSync('./commands').filter((file: string) => file.endsWith('.js'));
-
-// Sets path for command files
-for (const file of commandFiles) {
-    const command = require('./commands/' + file);
-    commands.set(command.name, command);
-}
-
+commandCollection.forEach((cmd: Command) => commands.set(cmd.name, cmd));
 
 client.once('ready', () => {
     console.log('Ready for commands.');
