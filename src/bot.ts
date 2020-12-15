@@ -8,7 +8,7 @@ client.commands = new Discord.Collection();
 const timers = new Discord.Collection();
 const cooldowns = new Discord.Collection();
 
-const commandFiles = fs.readdirSync('.commands').filter((file: string) => file.endsWith('.js'));
+const commandFiles = fs.readdirSync('./commands').filter((file: string) => file.endsWith('.js'));
 
 // Sets path for command files
 for (const file of commandFiles) {
