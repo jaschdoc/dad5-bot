@@ -1,6 +1,4 @@
-import { Command } from './commands';
-
-import { prefix } from '../bot';
+import { Command, prefix, Message, commandCollection} from './commands.interface';
 
 export const help: Command = {
     name: 'help',
@@ -8,9 +6,9 @@ export const help: Command = {
     description: 'Prints help information for commands',
     alias: ['h', 'yelp', 'techsupport', 'commands'],
     args: false,
-    async execute(message: any, args: any) {
+    async execute(message: Message, args: string[]) {
         const reply: string[] = [];
-        const { commands } = message.client;
+        const commands = commandCollection;
 
         if (!args.length) {
             reply.push(`These are all the commands available.`)
@@ -34,7 +32,6 @@ export const help: Command = {
         // If args is a real command, then print info for it
         if (command) {
             return message.channel.send(getCommandInfo(command));
-
         }
 
 
@@ -43,8 +40,8 @@ export const help: Command = {
     }
 }
 
-function getCommandInfo(command: any) {
-    const reply = new Array();
+function getCommandInfo(command: Command): string[] {
+    const reply: string[] = [];
 
     reply.push(`\`${command.name}\``)
     reply.push(` - Usage: \`${command.name} ${command.usage}\``)
