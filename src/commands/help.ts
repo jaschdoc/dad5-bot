@@ -15,7 +15,7 @@ export const help: Command = {
             reply.push(`Type \`${prefix}help [command]\` for detailed information of specific command.`);
             reply.push('');
 
-            commands.forEach((cmd: any) => {
+            commands.forEach((cmd: Command) => {
                 let info = getCommandInfo(cmd);
                 info.forEach(info => reply.push(info));
             });
@@ -23,11 +23,9 @@ export const help: Command = {
             return message.channel.send(reply);
         }
 
-        const commandName = args.shift();
+        const commandName: string = args.shift() || '';
 
-        const command = commands.find((cmd: any) => cmd.name === commandName);
-
-
+        const command = commands.find((cmd: Command) => cmd.name === commandName);
 
         // If args is a real command, then print info for it
         if (command) {
@@ -36,7 +34,9 @@ export const help: Command = {
 
 
         // Else print error help message
-
+        else {
+            return message.channel.send(`Error: \`${commandName}\` is not a valid command`);
+        }
     }
 }
 
