@@ -11,13 +11,13 @@ export const help: Command = {
         const commands = commandCollection;
 
         if (!args.length) {
-            reply.push(`These are all the commands available.`)
+            reply.push(`These are all the commands available`)
             reply.push(`Type \`${prefix}help [command]\` for detailed information of specific command.`);
             reply.push('');
 
             commands.forEach((cmd: Command) => {
-                let info = getCommandInfo(cmd);
-                info.forEach(info => reply.push(info));
+                reply.push(`- \`${cmd.name}\``);
+                reply.push('');
             });
 
             return message.channel.send(reply);
@@ -31,7 +31,6 @@ export const help: Command = {
         if (command) {
             return message.channel.send(getCommandInfo(command));
         }
-
 
         // Else print error help message
         else {
