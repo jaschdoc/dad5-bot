@@ -1,0 +1,21 @@
+Note: If args are mandatory for your command then set the args property to true, like so:
+	argus: true
+
+Add the following block to a new file (e.g. yourCommand.ts) and put it in the commands folder. After filling out the properties then add your code to the execute function. Finally, import your new command into commands.ts and add it to the array called commandCollection.
+
+
+// COPY THE FOLLOWING CODE
+
+
+import { Command, prefix, Message } from './commands.interface';
+
+export const yourCommand: Command = {
+    name: 'yourCommand',
+    usage: '[eventual arguments - notice this is a string]',
+    description: 'Prints help information for commands',
+    alias: ['alias1', 'alias2', 'alias3'],
+    args: false,
+    async execute(message: Message, args: string[]) { 
+		your code here
+	}
+}

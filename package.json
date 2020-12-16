@@ -2,10 +2,13 @@
 	"name": "dad5-bot",
 	"version": "1.0.0",
 	"description": "A bot to play around and have fun with",
-	"main": "bot.js",
+	"main": "dist/bot.js",
 	"author": "fjerbaek, dat5",
 	"scripts": {
-		"watch": "nodemon bot.js"
+		"start": "node dist/bot.js",
+		"build": "tsc",
+		"compiler": "tsc --watch",
+		"watch": "nodemon"
 	},
 	"dependencies": {
 		"discord.js": "^12.1.1",
@@ -13,6 +16,7 @@
 	},
 	"devDependencies": {
 		"dotenv": "^8.2.0",
-		"nodemon": "^2.0.6"
+		"nodemon": "^2.0.6",
+		"typescript": "^4.1.3"
 	}
 }

@@ -1,21 +1,13 @@
-const fs = require('fs');
-const Discord = require('discord.js');
-require('dotenv').config();
-const prefix = process.env.PREFIX;
+import Discord, { Client, Collection, Message } from 'discord.js';
+import { Command, commandCollection } from './commands/commands.interface';
+import dotenv from 'dotenv';
+dotenv.config();
+export const prefix: string = process.env.PREFIX!;
 
-const client = new Discord.Client();
-client.commands = new Discord.Collection();
-const timers = new Discord.Collection();
-const cooldowns = new Discord.Collection();
+const client: Client = new Discord.Client();
+const commands: Collection<string, Command> = new Discord.Collection();
 
-const commandFiles = fs.readdirSync('./commands').filter(file => file.endsWith('.js'));
-
-// Sets path for command files
-for (const file of commandFiles) {
-    const command = require('./commands/' + file);
-    client.commands.set(command.name, command);
-}
-
+commandCollection.forEach((cmd: Command) => commands.set(cmd.name, cmd));
 
 client.once('ready', () => {
     console.log('Ready for commands.');
@@ -24,25 +16,25 @@ client.once('ready', () => {
 client.login(process.env.BOT_TOKEN);
 
 // Parses messages sent 
-client.on('message', message => {
+client.on('message', (message: Message) => {
 
     // Breaks early if message does not start with prefix or if message is from a bot
     if (!message.content.startsWith(prefix) || message.author.bot) return;
 
     // Splits message into arguments 
-    const args = message.content.slice(prefix.length).split(/ +/);
+    const args: string[] = message.content.slice(prefix.length).split(/ +/);
 
     // Commands should be case insensitive 
-    const commandName = args.shift().toLowerCase();
+    const commandName: string = args.shift()?.toLocaleLowerCase() || '';
 
     // Matches commandname with name of commands or their aliases (can be set in commmand file)
-    const command = client.commands.get(commandName)
-        || client.commands.find(cmd => cmd.aliases && cmd.aliases.includes(commandName));
+    const command: Command | undefined = commands.get(commandName)
+        || commands.find((cmd: Command) => cmd.alias.includes(commandName));
     if (!command) return;
 
     // If command must have arguments (command.args = true), enforce it:
     if (command && command.args && !args.length) {
-        let reply = `You must specify an argument with this command.`;
+        let reply: string = `You must specify an argument with this command.`;
 
         if (command.usage) {
             reply += `\nUsage: \`${prefix} ${command.name} ${command.usage}\``;

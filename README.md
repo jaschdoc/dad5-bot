@@ -26,7 +26,9 @@ Please check out the [discord.js guide](https://discordjs.guide) if you're unsur
 - Install node.js
 - Run `npm install` in the root of the project directory
 - Set up a `.env`-file. Refer to [.env_sample](.env_sample). Please note, that only `PREFIX` and `BOT_TOKEN` are required at this stage.
-- Run `npm run watch`. This will watch the project files for changes and run the bot with those changes. *Note: This will take up your terminal, so you may want to open a new one.*
+- Run `npm run watch` and open a new and run `npm run compiler`. This will watch the project files for changes and run the bot with those changes. *Note: This will take up both your terminals, so you may want to open yet another one.*
+
+Note: `npm run build` will compile the project and throw any errors explicitly.
 
 ----
 
