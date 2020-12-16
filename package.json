@@ -7,7 +7,7 @@
 	"scripts": {
 		"start": "node dist/bot.js",
 		"build": "tsc",
-		"dev": "tsc --watch",
+		"compiler": "tsc --watch",
 		"watch": "nodemon"
 	},
 	"dependencies": {
