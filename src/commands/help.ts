@@ -1,10 +1,10 @@
-import { Command, prefix, Message, commandCollection} from './commands.interface';
+import { Command, prefix, Message, commandCollection } from './commands.interface';
 
 export const help: Command = {
     name: 'help',
     usage: '[command]',
     description: 'Prints help information for commands',
-    alias: ['h', 'yelp', 'techsupport', 'commands'],
+    alias: ['h    ', 'yelp', 'techsupport', 'commands'],
     args: false,
     async execute(message: Message, args: string[]) {
         const reply: string[] = [];
@@ -46,7 +46,11 @@ function getCommandInfo(command: Command): string[] {
     reply.push(`\`${command.name}\``)
     reply.push(` - Usage: \`${command.name} ${command.usage}\``)
     if (command.alias) {
-        reply.push(` - Aliases: ${command.alias}`)
+        const aliasMessage: string[] = [];
+
+        command.alias.forEach((alias: string) => aliasMessage.push(` \`${alias.trim().concat()}\``));
+        
+        reply.push(` - Aliases:${aliasMessage}`)
     } else {
         reply.push(` - Aliases: None, get to work`)
     }
