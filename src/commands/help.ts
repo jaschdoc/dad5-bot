@@ -4,7 +4,7 @@ export const help: Command = {
     name: 'help',
     usage: '[command]',
     description: 'Prints help information for commands',
-    alias: ['h    ', 'yelp', 'techsupport', 'commands'],
+    alias: ['h', 'yelp', 'techsupport', 'commands'],
     args: false,
     async execute(message: Message, args: string[]) {
         const reply: string[] = [];
