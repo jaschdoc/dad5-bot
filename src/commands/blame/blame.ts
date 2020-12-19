@@ -6,7 +6,7 @@ import { prefix } from '../../bot';
 
 export const blame: Command = {
     name: 'blame',
-    usage: '',
+    usage: '[command]',
     subcommands: [add],
     description: 'Handles blame',
     alias: ['klandring'],
