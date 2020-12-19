@@ -10,10 +10,10 @@ export const help: Command = {
     alias: ['h', 'yelp', 'techsupport', 'commands'],
     args: false,
     async execute(message: Message, args: string[]) {
-        const reply: string[] = [];
         const commands = commandCollection;
 
         if (!args.length) {
+            const reply: string[] = [];
             reply.push(`These are all the commands available`);
             reply.push(`Type \`${prefix}${this.name} ${this.usage}\` for detailed information of specific command.`);
             reply.push('');
@@ -26,9 +26,17 @@ export const help: Command = {
             return message.channel.send(reply);
         }
 
-        const commandName: string = args.shift() || '';
+        const commandArgument: string = args.shift() || '';
+        const command: Command | undefined = commands.find((cmd: Command) => cmd.name === commandArgument);
 
-        const command = commands.find((cmd: Command) => cmd.name === commandName);
+        const subcommandArgument: string = args.shift() || '';
+        const subcommand: Command | undefined = command?.subcommands.find((subcommand: Command) => subcommand.name === subcommandArgument)
+
+        if (command && subcommand) {
+            const reply: string[] = getCommandInfo(subcommand);
+            reply.unshift(`**This is subcommand of** \`${command.name}\``)
+            return message.channel.send(reply);
+        }
 
         // If args is a real command, then print info for it
         if (command) {
@@ -36,9 +44,7 @@ export const help: Command = {
         }
 
         // Else print error help message
-        else {
-            return message.channel.send(`Error: \`${commandName}\` is not a valid command`);
-        }
+        return message.channel.send(`Error: \`${commandArgument}\` is not a valid command`);
     }
 }
 
@@ -48,11 +54,12 @@ function getCommandInfo(command: Command): string[] {
     reply.push(`\`${command.name}\``);
     reply.push(command.description);
     reply.push(` - Usage: \`${command.name} ${command.usage}\``);
+
     if (command.alias.length !== 0) {
         const aliases: string[] = [];
 
         command.alias.forEach((alias: string) => aliases.push(` \`${alias.trim()}\``));
-        
+
         reply.push(` - Aliases:${aliases}`)
     }
 

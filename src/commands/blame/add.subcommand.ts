@@ -1,5 +1,6 @@
 import { Command, Message } from '../commands.interface';
 import { Blame, BlameResult } from '../../core/blame';
+import { blame } from './blame';
 
 export const add: Command = {
     name: 'add',
