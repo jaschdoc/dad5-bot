@@ -5,7 +5,7 @@ Created with [Discord.js](https://discord.js.org/#/).
 To get understanding of the project, please follow [this guide](https://discordjs.guide/).
 
 # Getting started
-These are the pre-requisites for running the bot. There are installation instructions below, however, you should have setup an application & bot in the discord developer controls.
+These are the pre-requisites for running the bot. There are installation instructions below, however, you should have setup an application & bot in the discord developer controls first.
 
 Furthermore, setting up a separate server on Discord just for testing the bot is a good idea.
 
@@ -26,7 +26,9 @@ Please check out the [discord.js guide](https://discordjs.guide) if you're unsur
 - Install node.js
 - Run `npm install` in the root of the project directory
 - Set up a `.env`-file. Refer to [.env_sample](.env_sample). Please note, that only `PREFIX` and `BOT_TOKEN` are required at this stage.
-- Run `npm run watch` and open a new and run `npm run compiler`. This will watch the project files for changes and run the bot with those changes. *Note: This will take up both your terminals, so you may want to open yet another one.*
+- Run `npm run watch`
+- Open a new terminal and run `npm run bot`.
+These last two steps will in conjunction watch the project files for changes and run the bot with those changes. *Note: This will take up both your terminals, so you may want to open yet another one.*
 
 Note: `npm run build` will compile the project and throw any errors explicitly.
 
