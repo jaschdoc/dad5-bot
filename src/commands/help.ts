@@ -1,4 +1,7 @@
-import { Command, prefix, Message, commandCollection } from './commands.interface';
+import { Command, Message, commandCollection } from './commands.interface';
+
+const prefix: string = process.env.PREFIX!;
+
 
 export const help: Command = {
     name: 'help',

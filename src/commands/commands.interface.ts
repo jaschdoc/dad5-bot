@@ -1,5 +1,4 @@
 import { Message } from 'discord.js';
-import { prefix } from '../bot';
 import { blame } from './blame';
 import { help } from './help';
 
@@ -22,4 +21,4 @@ export interface Command {
     execute(message: Message, args: string[]): Promise<Message | undefined>;
 };
 
-export { Message, prefix }
+export { Message }
