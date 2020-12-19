@@ -1,8 +1,6 @@
 import { Command, Message } from '../commands.interface';
 import { add } from './add.subcommand';
 import { help } from '../help';
-import { prefix } from '../../bot';
-
 
 export const blame: Command = {
     name: 'blame',
@@ -10,7 +8,7 @@ export const blame: Command = {
     subcommands: [add],
     description: 'Handles blame',
     alias: ['klandring'],
-    args: false,
+    args: true,
     async execute(message: Message, args: string[]) {
 
         const tempSubcommand: string = args.shift() || '';
@@ -25,11 +23,6 @@ export const blame: Command = {
             return help.execute(message, [this.name]);
         }
 
-        else {
-            const reply: string[] = [];
-            reply.push(`Unrecognized command.`);
-            reply.push(`Please use \`${prefix}${help.name} ${this.name}\` if you're unsure how to use this command`);
-            return message.channel.send(reply);
-        }
+        return Promise.reject(`No argument specified, argumenter filter didn't catch this`);
     }
 }

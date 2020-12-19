@@ -1,8 +1,9 @@
 import Discord, { Client, Collection, Message } from 'discord.js';
 
-import { Command, commandCollection } from './commands/commands.interface';
+import { Command, commandCollection, } from './commands/commands.interface';
 
 import dotenv from 'dotenv';
+import { help } from './commands/help';
 dotenv.config();
 
 export const prefix: string = process.env.PREFIX!;
@@ -42,17 +43,13 @@ client.on('message', (message: Message) => {
 
     // If command must have arguments (command.args = true), enforce it:
     if (command && command.args && !args.length) {
-        let reply: string = `You must specify an argument with this command.`;
-
-        if (command.usage) {
-            reply += `\nUsage: \`${prefix} ${command.name} ${command.usage}\``;
-        }
-        return message.reply(reply);
+        let reply: string = `You must specify an argument with this command. See ${prefix}${help.name} ${command.name} for detailed instructions`;
+        return message.channel.send(reply);
     }
 
     // Execute matched command
     command.execute(message, args).catch(error => {
         console.log(error)
-        return message.reply(`Something went wrong. Please try again`);
+        return message.channel.send(`Something went wrong. Please try again`);
     });
 });
