@@ -13,6 +13,17 @@
         "outDir": "dist"
     },
 
-    "include": ["src/**/*.ts"],
-    "exclude": ["node_modules"]
+    "include": [
+        "src/**/*.ts"
+    ],
+    "exclude": [
+        "node_modules",
+        ".github",
+        ".gitignore",
+        ".env",
+        ".env_sample",
+        "LICENSE",
+        "*.json",
+        "*.md",
+    ],
 }
