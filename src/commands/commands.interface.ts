@@ -1,5 +1,5 @@
 import { Message } from 'discord.js';
-import { blame } from './blame';
+import { blame } from './blame/blame';
 import { help } from './help';
 
 export const commandCollection: Command[] = [
