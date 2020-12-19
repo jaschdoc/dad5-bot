@@ -1,13 +1,12 @@
 import { Command, Message } from '../commands.interface';
 import { Blame, BlameResult } from '../../core/blame';
-import { blame } from './blame';
 
 export const add: Command = {
     name: 'add',
     usage: '<target> <title>',
     subcommands: [],
     description: `Blames someone for something stupid they've done`,
-    alias: [],
+    alias: ['new'],
     args: true,
     async execute(message: Message, args: string[]) {
         const target: string = args[1];
