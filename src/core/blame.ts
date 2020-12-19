@@ -7,12 +7,11 @@ export interface Blame {
     title: string;
 
     result: BlameResult;
-    
-    pending: boolean;
 
 };
 
 export enum BlameResult {
+    Pending,
     Win,
     Loss,
     Tie,
