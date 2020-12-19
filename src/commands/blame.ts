@@ -1,9 +1,11 @@
 import { Blame, BlameResult } from '../core/blame';
 import { Command, Message } from './commands.interface';
 
+
 export const blame: Command = {
     name: 'blame',
     usage: '',
+    subcommands: [],
     description: 'Handles blame',
     alias: ['klandring'],
     args: false,

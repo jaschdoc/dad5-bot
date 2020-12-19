@@ -12,6 +12,8 @@ export interface Command {
 
     usage: string;
 
+    subcommands: Command[];
+
     description: string;
 
     alias: string[];

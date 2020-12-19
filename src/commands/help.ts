@@ -6,6 +6,7 @@ const prefix: string = process.env.PREFIX!;
 export const help: Command = {
     name: 'help',
     usage: '[command]',
+    subcommands: [],
     description: 'Prints help information for commands',
     alias: ['h', 'yelp', 'techsupport', 'commands'],
     args: false,
@@ -45,18 +46,25 @@ export const help: Command = {
 function getCommandInfo(command: Command): string[] {
     const reply: string[] = [];
 
-    reply.push(`\`${command.name}\``)
-    reply.push(` - Usage: \`${command.name} ${command.usage}\``)
-    if (command.alias) {
-        const aliasMessage: string[] = [];
+    reply.push(`\`${command.name}\``);
+    reply.push(command.description);
+    reply.push(` - Usage: \`${command.name} ${command.usage}\``);
+    if (command.alias.length !== 0) {
+        const aliases: string[] = [];
 
-        command.alias.forEach((alias: string) => aliasMessage.push(` \`${alias.trim().concat()}\``));
+        command.alias.forEach((alias: string) => aliases.push(` \`${alias.trim()}\``));
         
-        reply.push(` - Aliases:${aliasMessage}`)
-    } else {
-        reply.push(` - Aliases: None, get to work`)
+        reply.push(` - Aliases:${aliases}`)
     }
-    reply.push(` - ${command.description}`)
+
+    if (command.subcommands.length !== 0) {
+        const subcommands: string[] = [];
+
+        command.subcommands.forEach((subcommand: Command) => subcommands.push(` \`${subcommand.name.trim()}\``))
+
+        reply.push(` - Subcommands:${subcommands}`)
+    }
+
     reply.push('');
 
     return reply;
