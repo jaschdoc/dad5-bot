@@ -18,12 +18,7 @@ export const blame: Command = {
         const subcommand = this.subcommands.find((command: Command) => command.name === tempSubcommand || command.alias.includes(tempSubcommand));
 
         if (subcommand) {
-            try {
-                subcommand.execute(message, args);
-            } catch (error) {
-                console.error(error);
-                return message.channel.send(`Something went wrong. Please try again`)
-            }
+            return subcommand.execute(message, args);
         }
 
         else if (tempSubcommand === help.name || help.alias.includes(tempSubcommand)) {
