@@ -51,10 +51,8 @@ client.on('message', (message: Message) => {
     }
 
     // Execute matched command
-    try {
-        command.execute(message, args);
-    } catch (error) {
-        console.error(error);
-        message.reply(`Something went wrong. Please try again`);
-    }
+    command.execute(message, args).catch(error => {
+        console.log(error)
+        return message.reply(`Something went wrong. Please try again`);
+    });
 });
