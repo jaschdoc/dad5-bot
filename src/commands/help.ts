@@ -14,8 +14,8 @@ export const help: Command = {
         const commands = commandCollection;
 
         if (!args.length) {
-            reply.push(`These are all the commands available`)
-            reply.push(`Type \`${prefix}help [command]\` for detailed information of specific command.`);
+            reply.push(`These are all the commands available`);
+            reply.push(`Type \`${prefix}${this.name} ${this.usage}\` for detailed information of specific command.`);
             reply.push('');
 
             commands.forEach((cmd: Command) => {
