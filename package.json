@@ -7,8 +7,8 @@
 	"scripts": {
 		"start": "node dist/bot.js",
 		"build": "tsc",
-		"compiler": "tsc --watch",
-		"watch": "nodemon"
+		"watch": "tsc --watch",
+		"bot": "nodemon"
 	},
 	"dependencies": {
 		"discord.js": "^12.1.1",
