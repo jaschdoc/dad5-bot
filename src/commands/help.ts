@@ -1,7 +1,6 @@
 import { Command, Message, commandCollection } from './commands.interface';
 
-const prefix: string = process.env.PREFIX!;
-
+import { prefix } from '../bot';
 
 export const help: Command = {
     name: 'help',

@@ -5,8 +5,7 @@ import { Command, commandCollection } from './commands/commands.interface';
 import dotenv from 'dotenv';
 dotenv.config();
 
-const prefix: string = process.env.PREFIX!;
-
+export const prefix: string = process.env.PREFIX!;
 
 const client: Client = new Discord.Client();
 const commands: Collection<string, Command> = new Discord.Collection();
