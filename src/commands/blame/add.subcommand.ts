@@ -9,8 +9,18 @@ export const add: Command = {
     alias: ['new'],
     args: true,
     async execute(message: Message, args: string[]) {
-        const target: string = args[1];
-        const title: string = args[2];
+        const target: string = args.shift() || '';
+        const title: string = args.shift() || '';
+
+
+        // Refactor this into repository service. Which should reject with a good explanation of errors which in turn can be parsed into a discord message.
+        if (!target) {
+            return message.channel.send(`Missing argument: \`<target>\``);
+        }
+
+        if (!title) {
+            return message.channel.send(`Missing argument: \`<title>\``);
+        }
 
         const blame: Blame = {
             initiator: message.author.username,
@@ -19,8 +29,9 @@ export const add: Command = {
             result: BlameResult.Pending
         }
 
-        const reply: string = `${blame.initiator} on ${blame.target} for ${blame.title}, result: ${blame.result}`
-
+        const reply: string[] = [];
+        reply.push(`${message.author.username} blames ${target}. *Crowd goes wild*`);
+        reply.push(`Subject: ${title}`)
         return message.channel.send(reply);
     }
 }
