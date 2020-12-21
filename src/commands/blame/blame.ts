@@ -23,6 +23,6 @@ export const blame: Command = {
             return help.execute(message, [this.name]);
         }
 
-        return Promise.reject(`No argument specified, argumenter filter didn't catch this`);
+        return Promise.reject(`No argument specified, argument filter didn't catch this`);
     }
 }
