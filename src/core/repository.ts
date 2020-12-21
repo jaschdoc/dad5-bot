@@ -7,7 +7,7 @@ export abstract class Repository<T, K> {
         return Promise.resolve();
     }
 
-    findByKey(key: K): Promise<T | void> {
+    findById(key: K): Promise<T | void> {
         return Promise.resolve(this.map.get(key));
     }
 
@@ -19,7 +19,7 @@ export abstract class Repository<T, K> {
         return Promise.resolve(values)
     }
 
-    deleteByKey(key: K): Promise<void> {
+    deleteById(key: K): Promise<void> {
         this.map.delete(key);
         return Promise.resolve();
     }
@@ -47,10 +47,10 @@ testRepository.save(entity2, key2).then(r => console.log(r));
 
 testRepository.findAll().then(values => console.log(values)).catch();
 
-testRepository.findByKey(key1).then((value) => console.log(`findByKey: ${value}`)).catch()
+testRepository.findById(key1).then((value) => console.log(`findByKey: ${value}`)).catch()
 
 
 
 
-testRepository.deleteByKey(key1).then(r => console.log(r));
-testRepository.findByKey(key1).then((value) =>  console.log(`find after deletion: ${value}`)).catch()
+testRepository.deleteById(key1).then(r => console.log(r));
+testRepository.findById(key1).then((value) =>  console.log(`find after deletion: ${value}`)).catch()
