@@ -1,5 +1,5 @@
 import { Command, Message } from '../commands.interface';
-import { Blame, BlameResult } from '../../core/blame';
+import { Blame, BlameResult, BlameRepository } from '../../core/blame';
 
 export const add: Command = {
     name: 'add',
@@ -28,6 +28,8 @@ export const add: Command = {
             title: title,
             result: BlameResult.Pending
         }
+
+        BlameRepository.save(blame, blame.target).then(r => console.log(r));
 
         const reply: string[] = [];
         reply.push(`${message.author.username} blames ${target}. *Crowd goes wild*`);
