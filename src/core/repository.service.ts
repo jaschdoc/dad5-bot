@@ -1,20 +1,20 @@
-class Repository<K, V> {
+export abstract class Repository<T, K> {
 
-    private map: Map<K, V> = new Map();
+    private map: Map<K, T> = new Map();
 
-    save(key: K, value: V): Promise<void> {
+    save(value: T, key: K): Promise<void> {
         this.map.set(key, value);
         return Promise.resolve();
     }
 
-    findByKey(key: K): Promise<V | void> {
+    findByKey(key: K): Promise<T | void> {
         return Promise.resolve(this.map.get(key));
     }
 
-    findAll(): Promise<Array<V>> {
-        const values: Array<V> = [];
+    findAll(): Promise<Array<T>> {
+        const values: Array<T> = [];
 
-        this.map.forEach((value: V) => values.push(value));
+        this.map.forEach((value: T) => values.push(value));
 
         return Promise.resolve(values)
     }
@@ -30,9 +30,7 @@ class Repository<K, V> {
     }
 }
 
-
-
-export class TestRepository extends Repository<String, String> {
+class TestRepository extends Repository<String, String> {
 
 }
 
@@ -43,22 +41,16 @@ const key2 = "key2";
 
 const testRepository: TestRepository = new TestRepository();
 
-testRepository.save(key1, entity1);
-testRepository.save(key2, entity2);
+testRepository.save(entity1, key1).then(r => console.log(r));
+testRepository.save(entity2, key2).then(r => console.log(r));
 
 
 testRepository.findAll().then(values => console.log(values)).catch();
 
-
-let find1
-
-testRepository.findByKey(key1).then((value) => find1 = value).catch()
-
-console.log(find1);
+testRepository.findByKey(key1).then((value) => console.log(`findByKey: ${value}`)).catch()
 
 
 
-testRepository.deleteByKey(key1);
-testRepository.findByKey(key1).then((value) => find1 = value).catch()
 
-console.log(find1);
+testRepository.deleteByKey(key1).then(r => console.log(r));
+testRepository.findByKey(key1).then((value) =>  console.log(`find after deletion: ${value}`)).catch()
