@@ -13,7 +13,7 @@ export const list: Command = {
         const list: Blame[] = await BlameRepository.findAll();
         const reply: string[] = [];
 
-        list.forEach(blame => reply.push(`${blame.initiator} blames ${blame.target}.`))
+        list.forEach(blame => reply.push(`${blame.initiator} --> ${blame.target} | Subject: ${blame.title} | Result: ${blame.result}\n`))
 
         if (reply.length !== 0) return message.channel.send(reply);
         return message.channel.send(`No one has done anything stupid`)
