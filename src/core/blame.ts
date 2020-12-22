@@ -13,10 +13,10 @@ export interface Blame {
 }
 
 export enum BlameResult {
-    Pending,
-    Win,
-    Loss,
-    Tie,
+    Pending = 'Pending',
+    Win = 'Win',
+    Loss = 'Loss',
+    Tie = 'Tie',
 }
 
 class BlameRepository extends Repository<Blame, string> {}
