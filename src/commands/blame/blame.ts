@@ -1,11 +1,12 @@
 import { Command, Message } from '../commands.interface';
 import { add } from './add.subcommand';
 import { help } from '../help';
+import {list} from "./list.subcommand";
 
 export const blame: Command = {
     name: 'blame',
     usage: '[command]',
-    subcommands: [add],
+    subcommands: [add, list],
     description: 'Handles blame',
     alias: ['klandring'],
     args: true,

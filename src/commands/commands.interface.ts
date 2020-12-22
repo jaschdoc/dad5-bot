@@ -21,6 +21,6 @@ export interface Command {
     args: boolean;
 
     execute(message: Message, args: string[]): Promise<Message | undefined>;
-};
+}
 
 export { Message }
