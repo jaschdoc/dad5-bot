@@ -43,7 +43,7 @@ client.on('message', (message: Message) => {
 
     // If command must have arguments (command.args = true), enforce it:
     if (command && command.args && !args.length) {
-        let reply: string = `You must specify an argument with this command. See ${prefix}${help.name} ${command.name} for detailed instructions`;
+        let reply: string = `You must specify an argument with this command. See \`${prefix}${help.name} ${command.name}\` for detailed instructions`;
         return message.channel.send(reply);
     }
 
